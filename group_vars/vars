@@ -1,0 +1,12 @@
+### Global variables ###
+DOCKER_EE_URL: "https://storebits.docker.com/ee/centos/sub-9ecde8d1-dcee-4ab4-9ae0-d5b38585246a"
+UCP_Hostname: ""
+UCP_Manager_IP: "114.115.128.119"
+UCP_Admin: "hydsoft"
+UCP_Admin_Pass: "1qaz@WSX"
+UCP_San: "locahost"
+UCP_URL: ""
+UCP_Port: ""
+UCP_Version: "latest"
+DTR_Version: "latest"
+license_file: '/etc/ansible/group_vars/docker_subscription.lic'

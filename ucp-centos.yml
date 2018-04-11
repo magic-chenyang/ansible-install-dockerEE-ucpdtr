@@ -1,0 +1,27 @@
+--- 
+- hosts: huawei
+  gather_facts: false
+  become_user: root
+  vars_files:
+    - ./group_vars/vars
+  tasks:
+    - name: Copy the license
+      copy: src="{{ license_file }}" dest="/tmp/{{ license_file | basename }}"
+
+    - name: download and install ucp images
+      shell:
+        docker run --rm  --name ucp -v /var/run/docker.sock:/var/run/docker.sock docker/ucp:{{ UCP_Version }} install --host-address {{ UCP_Manager_IP }}  --admin-username {{ UCP_Admin }} --admin-password {{ UCP_Admin_Pass }} --san {{ UCP_San }} --license "$(cat /tmp/{{ license_file | basename }})"
+
+    - name: capture swarm join token - manager
+      shell:
+        echo `docker swarm join-token manager` | cut -f2 -d':' | sed 's|\\||g'
+      register: managertoken
+    - name: capture swarm join token - worker
+      shell:
+        echo `docker swarm join-token worker` | cut -f2 -d':' | sed 's|\\||g'
+      register: worktoken
+    - name: save managertoken
+      local_action: copy content="token{{ ":" }} {{ hostvars[groups['huawei'][0]]['managertoken']['stdout'] }}" dest=/tmp/manager_token
+
+    - name: save worktoken
+      local_action: copy content="token{{ ":" }} {{ hostvars[groups['huawei'][0]]['worktoken']['stdout'] }}" dest=/tmp/worker_token

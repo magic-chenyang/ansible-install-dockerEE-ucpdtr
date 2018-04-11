@@ -1,0 +1,40 @@
+---
+- hosts: huawei
+  gather_facts: false
+
+  vars_files:
+    - ./group_vars/vars
+  tasks:
+     - name: uninstall old versions of docker
+       shell:
+         yum remove -y docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux docker-engine docker-ce docker-ee
+     - name: remove old version of docker.repo
+       shell:
+         rm -rf /etc/yum.repos.d/docker*.repo
+     - name: add vars
+       shell:
+         sudo -E sh -c 'echo "{{ DOCKER_EE_URL }}/centos" > /etc/yum/vars/dockerurl'
+     - name: yum install
+       shell:
+         yum install -y yum-utils device-mapper-persistent-data lvm2
+#       yum:
+#         name: "{{ item }}"
+#         state: latest
+#       with_items:
+#         - yum-utils
+#         - device-mapper-persistent-data
+#         - lvm2
+
+     - name: add docker repo
+       shell:
+         sudo -E yum-config-manager --add-repo "{{ DOCKER_EE_URL }}/centos/docker-ee.repo"
+     - name: install docker
+       shell:
+         yum -y install docker-ee
+#       yum:
+#         name: docker-ee
+#         state: latest
+#         update_cache: yes
+     - name: start docker
+       shell:
+         systemctl start docker
