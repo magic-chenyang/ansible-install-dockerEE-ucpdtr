@@ -49,5 +49,21 @@
 114.115.128.119	ansible_connection=ssh	ansible_ssh_user=root	ansible_ssh_pass='Yangchen1234'
 [DockerEE-node]
 114.115.128.119 ansible_connection=ssh  ansible_ssh_user=root   ansible_ssh_pass='Yangchen1234'
-[10.30.0.58]
+[test10]
 10.30.0.58
+10.30.0.59
+
+
+#[DockerEE-node]
+#< Docker cluster nodes >
+#[UCP-manager]
+#< Fisrt UCP manager node >
+#[UCP-replicas]
+#< UCP-replicas >
+#[UCP-worker]
+#< UCP worker nodes >
+#[DTR-manager]
+#< First DTR node >
+#[DTR-replicas]
+#< DTR replica node  >
+

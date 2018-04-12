@@ -1,5 +1,5 @@
 --- 
-- hosts: huawei
+- hosts: UCP-manager
   gather_facts: false
   become_user: root
   vars_files:

@@ -1,5 +1,5 @@
 ---
-- hosts: huawei
+- hosts: DockerEE-node
   gather_facts: false
 
   vars_files:

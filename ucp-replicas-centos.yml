@@ -1,0 +1,13 @@
+---
+- hosts: UCP-replicas
+  gather_facts: false
+  become_user: root
+  vars_files:
+    - ./group_vars/vars
+  tasks:
+    - name: Get manager token
+      include_vars:
+        file: /tmp/manager_token
+        name: add_manager
+    - name: Add manager nodes to the swarm
+      command: "{{ add_manager.token }}"
