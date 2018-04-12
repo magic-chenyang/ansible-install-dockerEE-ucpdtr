@@ -46,9 +46,9 @@
 [123]
 10.30.0.59	ansible_connection=ssh	ansible_ssh_user=root	ansible_ssh_pass='ubuntu'
 [huawei]
-114.115.128.119	ansible_connection=ssh	ansible_ssh_user=root	ansible_ssh_pass='Yangchen1234'
+114.115.128.119	
 [DockerEE-node]
-114.115.128.119 ansible_connection=ssh  ansible_ssh_user=root   ansible_ssh_pass='Yangchen1234'
+114.115.128.119 
 [test10]
 10.30.0.58
 10.30.0.59
