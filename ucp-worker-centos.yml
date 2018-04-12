@@ -12,4 +12,4 @@
         file: /tmp/worker_token
         name: add_worker
     - name: add worker node to the swarm
-      command: "{{ add_worker  }}"
+      command: "{{ add_worker }}"
