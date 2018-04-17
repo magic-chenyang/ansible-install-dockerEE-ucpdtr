@@ -1,0 +1,12 @@
+---
+
+# install docker ee 
+- import_playbook : playbooks/docker-centos.yml  
+# install DTR
+- import_playbook : dtr-centos.yml  
+# install ntpserver for docker node
+- import_playbook : ntp-centos.yml  
+# install UCP cluster and worker
+- import_playbook : ucp-centos.yml  
+- import_playbook : ucp-replicas-centos.yml  
+- import_playbook : ucp-worker-centos.yml

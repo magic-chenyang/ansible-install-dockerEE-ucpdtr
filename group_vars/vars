@@ -1,0 +1,13 @@
+### Global variables ###
+DOCKER_EE_URL: "https://storebits.docker.com/ee/centos/sub-9ecde8d1-dcee-4ab4-9ae0-d5b38585246a"
+DTR_Hostname: "swarm-shilei-01"
+UCP_Manager_IP: "10.30.0.59"
+UCP_Admin: "hydsoft"
+UCP_Admin_Pass: "1qaz@WSX"
+UCP_San: "locahost"
+UCP_URL: "https://10.30.0.59"
+UCP_Version: "latest"
+DTR_Version: "latest"
+license_file: '/etc/ansible/group_vars/docker_subscription.lic'
+
+ntp_server: "114.115.128.119"
